@@ -11,6 +11,11 @@
 // @license      MIT
 // ==/UserScript==
 
+async function sleep(ms)
+{
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 // 模拟键盘事件
 function fireKeyEvent(el, evtType, keyCode)
 {
@@ -76,18 +81,23 @@ window.onload = function()
     let timer
     let controlDisplaying = false;
     let onBtnClick = false
+    let atBottom = false
 
     scrollSpeed.onchange = function ()
     {
-        if (scrollSpeed.value != 0)
+        if (scrollSpeed.value !== 0)
         {
             clearInterval(timer)
-            timer = setInterval(() =>
+            timer = setInterval(async() =>
             {
-                if (document.documentElement.scrollHeight - document.documentElement.scrollTop === document.documentElement.clientHeight)
+                console.log(document.documentElement.scrollHeight - document.documentElement.scrollTop === document.documentElement.clientHeight)
+                if (!atBottom && document.documentElement.scrollHeight - document.documentElement.scrollTop === document.documentElement.clientHeight)
                 {
+                    atBottom = true
+                    await sleep(2000)
                     fireKeyEvent(document, "keydown", 39)
-                    //clearInterval(timer)
+                    await sleep(2000)
+                    atBottom = false
                 }
                 else
                 {
