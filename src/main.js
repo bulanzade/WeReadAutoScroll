@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         微信读书自动翻页
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.1.1
 // @description  微信读书网页版自动翻页
 // @author       bulan_zade
 // @match        https://weread.qq.com/web/reader/*
