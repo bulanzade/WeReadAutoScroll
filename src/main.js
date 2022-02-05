@@ -1,12 +1,11 @@
 // ==UserScript==
 // @name         微信读书自动翻页
 // @namespace    http://tampermonkey.net/
-// @version      0.1.1
+// @version      0.1.2
 // @description  微信读书网页版自动翻页
 // @author       bulan_zade
 // @match        https://weread.qq.com/web/reader/*
-// @require      https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js
-// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @icon         https://rescdn.qqmail.com/node/wr/wrpage/style/images/independent/favicon/favicon_16h.png
 // @grant        none
 // @license      MIT
 // ==/UserScript==
@@ -85,7 +84,7 @@ window.onload = function()
 
     scrollSpeed.onchange = function ()
     {
-        if (scrollSpeed.value !== 0)
+        if (scrollSpeed.value != 0)
         {
             clearInterval(timer)
             timer = setInterval(async() =>
